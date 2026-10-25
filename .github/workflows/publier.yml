@@ -1,0 +1,25 @@
+name: Publier sur npm
+
+# Se déclenche quand vous publiez une « Release » GitHub (ex. v0.1.0).
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  id-token: write   # provenance npm (« Built and signed on GitHub Actions »)
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+          cache: npm
+      - run: npm ci
+      - run: npm publish --provenance --access public   # prepublishOnly : build + tests
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

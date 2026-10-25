@@ -1,0 +1,59 @@
+{
+  "name": "@pismile/node",
+  "version": "0.1.0",
+  "description": "SDK serveur pismile pour Node.js : demandes de paiement PI-SPI (BCEAO) à vos utilisateurs « Se connecter avec pismile », et vérification des webhooks.",
+  "keywords": [
+    "pismile",
+    "pi-spi",
+    "bceao",
+    "uemoa",
+    "paiement",
+    "payment",
+    "mobile-money",
+    "webhooks",
+    "xof"
+  ],
+  "homepage": "https://pismile.com/docs/sdk/node",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getpismile/pismile-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/getpismile/pismile-node/issues",
+    "email": "support@pismile.com"
+  },
+  "license": "MIT",
+  "author": "pismile <support@pismile.com> (https://pismile.com)",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0",
+    "typescript": "5.6.3",
+    "vitest": "2.1.9"
+  }
+}
